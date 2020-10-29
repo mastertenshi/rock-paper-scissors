@@ -1,15 +1,3 @@
-function computerPlay() {
-    let rand = Math.floor(Math.random() * 3); 
-    switch(rand) {
-        case 0:
-            return "rock";
-        case 1:
-            return "paper";
-        default:
-            return "scissors";
-    }
-}
-
 function playRound(playerSelection, computerSelection) {
     switch(playerSelection) {
         case "rock":
@@ -48,6 +36,17 @@ function playRound(playerSelection, computerSelection) {
     }
 }
 
+function computerPlay() {
+    let rand = Math.floor(Math.random() * 3); 
+    switch(rand) {
+        case 0:
+            return "rock";
+        case 1:
+            return "paper";
+        default:
+            return "scissors";
+    }
+}
 
 function select(str){
     let playerSelection = str;
@@ -57,11 +56,9 @@ function select(str){
         text.innerHTML = playRound(playerSelection, computerSelection);
     } else {
         win.innerHTML = loss.innerHTML = tie.innerHTML = counter = 0;
-        select(playerSelection);
+        select(str);
     }
 }
-
-let counter = 0;
 
 function update(result) {
     switch(result){
@@ -77,11 +74,15 @@ function update(result) {
     }
 }
 
+let counter = 0;
+
+let win, loss, tie, text;
+
 win = document.getElementById("win");
 loss = document.getElementById("loss");
 tie = document.getElementById("tie");
 
-let text = document.getElementById("text");
+text = document.getElementById("text");
 
 
 document.getElementById("rock").onclick = function() {
