@@ -22,7 +22,7 @@ function playRound(playerSelection, computerSelection) {
                 return "You lose! Paper beats Rock";
             }
             update("tie");
-            return "Tie!";
+            return "Tie! You both chose Rock";
         case "paper":
             if(computerSelection == "rock"){
                 update("win");
@@ -33,7 +33,7 @@ function playRound(playerSelection, computerSelection) {
                 return "You lose! Scissors beats Paper";
             }
             update("tie");
-            return "Tie!";
+            return "Tie! You both chose Paper";
         case "scissors":
             if(computerSelection == "paper"){
                 update("win");
@@ -44,49 +44,44 @@ function playRound(playerSelection, computerSelection) {
                 return "You lose! Rock beats Scissors";
             }
             update("tie");
-            return "Tie";
+            return "Tie! You both chose Scissors";
     }
 }
 
 
 function select(str){
-    playerSelection = str;
-    computerSelection = computerPlay();
+    let playerSelection = str;
+    let computerSelection = computerPlay();
     if(counter < 5) {
-        counter ++;
-        playRound(playerSelection, computerSelection);
+        counter++;
+        text.innerHTML = playRound(playerSelection, computerSelection);
     } else {
-        win = loss = tie = 0;
-        document.getElementById("win").innerHTML = 0;
-        document.getElementById("loss").innerHTML = 0;
-        document.getElementById("tie").innerHTML = 0;
-
-        counter = 1;
-        playRound(playerSelection, computerSelection);
+        win.innerHTML = loss.innerHTML = tie.innerHTML = counter = 0;
+        select(playerSelection);
     }
 }
 
-let counter, win, loss, tie;
-    coutner = win = loss = tie = 0;
-let playerSelection;
-let computerSelection;
+let counter = 0;
 
 function update(result) {
     switch(result){
         case "win":
-            win++;
-            document.getElementById("win").innerHTML = win;
+            win.innerHTML++;
             break;
         case "loss":
-            loss++;
-            document.getElementById("loss").innerHTML = loss;
+            loss.innerHTML++;
             break;
         case "tie":
-            tie++;
-            document.getElementById("tie").innerHTML = tie;
+            tie.innerHTML++;
             break;
     }
 }
+
+win = document.getElementById("win");
+loss = document.getElementById("loss");
+tie = document.getElementById("tie");
+
+let text = document.getElementById("text");
 
 
 document.getElementById("rock").onclick = function() {
