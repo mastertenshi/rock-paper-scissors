@@ -53,9 +53,9 @@ function select(str){
     let computerSelection = computerPlay();
     if(counter < 5) {
         counter++;
-        text.innerHTML = playRound(playerSelection, computerSelection);
+        text.textContent = playRound(playerSelection, computerSelection);
     } else {
-        win.innerHTML = loss.innerHTML = tie.innerHTML = counter = 0;
+        win.textContent = loss.textContent = tie.textContent = counter = 0;
         select(str);
     }
 }
@@ -63,13 +63,13 @@ function select(str){
 function update(result) {
     switch(result){
         case "win":
-            win.innerHTML++;
+            win.textContent++;
             break;
         case "loss":
-            loss.innerHTML++;
+            loss.textContent++;
             break;
         case "tie":
-            tie.innerHTML++;
+            tie.textContent++;
             break;
     }
 }
